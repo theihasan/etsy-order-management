@@ -32,7 +32,7 @@ git clone https://github.com/imabulhasan99/etsy-order-management.git
 cd etsy-order-management
 </pre>
 
-<p>Install all dependency/p>
+<p>Install all dependency</p>
 <pre>
 composer install
 </pre>
@@ -43,16 +43,17 @@ composer install
 <pre>
 ETSY_API_KEY = 'your etsy api key'
 </pre>
-<p>If you don't have a api key go to <a style="color:red" herf='https://www.etsy.com/developers/register'>Here</a></p>
+
+<p>If you don't have an API key, go to <a style="color:red" href='https://www.etsy.com/developers/register'>Here</a></p>
 
 <p>Configaure your Database in .env</p>
 <pre>
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=your_database_name
-DB_USERNAME=your_database_username
-DB_PASSWORD=your_database_password
+DB_DATABASE=db name
+DB_USERNAME=db username
+DB_PASSWORD=
 </pre>
 
 <p>Generate Application key using this artisan command</p>
