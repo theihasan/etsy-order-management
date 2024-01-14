@@ -9,19 +9,23 @@ class ReciptsServices
 {
     protected $baseUrl = 'https://openapi.etsy.com/v3/application/';
 
-    public function getShopRecipts($shopId)
+    public function getShopRecipts($shopId, $page = 1, $limit = 25)
     {
         $endpoint = "shops/{$shopId}/receipts";
         $apiKey = config('etsy.api_key');
 
         try {
+            $offset = ($page - 1) * $limit;
             $response = Http::withHeaders([
                 'x-api-key' => $apiKey,
-            ])->get($this->baseUrl . $endpoint);
+            ])->get($this->baseUrl . $endpoint,[
+                'limit' => $limit,
+                'offset' => $offset,
+            ]);
 
             if ($response->ok()) {
                 if(isset($response['result'])) {
-                    return view('order-details', ['orderData' => $response['result']]);
+                    return view('order-details', ['orderData' => $response['result'],'page' => $page, 'limit' => $limit]);
                 }
                 return $response->json();
             }

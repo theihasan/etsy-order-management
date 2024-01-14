@@ -21,7 +21,7 @@ Route::middleware(["auth"])->group(function () {
 });
 
 Route::prefix('api')->middleware(["auth"])->group(function () {
-    Route::post('view-shop/{shop_id}',[OrderController::class,'index'])->name('view.data');
+    Route::post('view-shop-orders/{shop_id}/page/{page}',[OrderController::class,'index'])->name('view.data');
 });
 
 

@@ -30,6 +30,15 @@
                         </tbody>
                     </table>
                 </div>
+                <div class="mt-4">
+                    @if($page > 1)
+                        <a href="{{ route('view.data', ['page' => $page - 1]) }}" class="text-blue-500 hover:underline">Previous</a>
+                    @endif
+            
+                    @if(count($orderData) === $limit)
+                        <a href="{{ route('view.data', ['page' => $page + 1]) }}" class="text-blue-500 hover:underline">Next</a>
+                    @endif
+                </div>
             </div>
         </div>
     </div>
