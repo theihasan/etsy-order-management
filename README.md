@@ -1,3 +1,5 @@
+<h1> <b>Etsy Order Management System</b></h1>
+
 - [Introduction](#introduction)
 - [Features](#features)
 - [Prerequisites](#prerequisites)
