@@ -20,6 +20,9 @@ class ReciptsServices
             ])->get($this->baseUrl . $endpoint);
 
             if ($response->ok()) {
+                if(isset($response['result'])) {
+                    return view('order-details', ['orderData' => $response['result']]);
+                }
                 return $response->json();
             }
         } catch (\Exception $e) {

@@ -8,8 +8,7 @@ use App\Http\Requests\ShopRequest;
 
 class OrderController extends Controller
 {
-    public function index(ShopRequest $request, ReciptsServices $reciptsServices){
-        $validatedData = $this->validated();
-        $reciptsServices->getShopRecipts($validatedData['shop_id']);
+    public function index(ReciptsServices $reciptsServices, $shopId){
+        $result = $reciptsServices->getShopRecipts($shopId);
     }
 }
