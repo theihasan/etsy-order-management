@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
+            {{ __('Shops') }}
         </h2>
     </x-slot>
 
@@ -18,12 +18,12 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($alldata as $data)
+                            @foreach($shops as $data)
                                 <tr>
                                     <td class="border-b">{{ $data->id }}</td>
                                     <td class="border-b">{{ $data->shop_id }}</td>
                                     <td class="border-b">
-                                        <a href="{{ route('view.data', $data->shop_id) }}" class="text-blue-500">View</a>
+                                        <a href="{{ route('orders.index', $data->shop_id) }}" class="text-blue-500">View</a>
                                     </td>
                                 </tr>
                             @endforeach

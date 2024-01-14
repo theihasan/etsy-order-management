@@ -17,12 +17,11 @@ use App\Http\Controllers\ProfileController;
 */
 
 Route::middleware(["auth"])->group(function () {
-    Route::get("all-shop", [ShopController::class,"index"])->name("all.shops");
+    Route::get("shops", [ShopController::class,"index"])->name("shops.index");
+    Route::post('shops/{shop_id}/orders',[OrderController::class,'index'])->name('orders.index');
 });
 
-Route::prefix('api')->middleware(["auth"])->group(function () {
-    Route::post('view-shop-orders/{shop_id}/page/{page}',[OrderController::class,'index'])->name('view.data');
-});
+
 
 
 Route::get('/', function () {

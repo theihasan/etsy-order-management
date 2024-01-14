@@ -7,8 +7,8 @@ use Illuminate\Http\Request;
 
 class ShopController extends Controller
 {
-    public function index(){
-        $shops = Shop::all();
-        return view('all-shop',['alldata' =>$shops]);
+    public function index()
+    {
+        return view('shops.index',['shops' => Shop::all()]);
     }
 }

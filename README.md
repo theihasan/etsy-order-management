@@ -43,7 +43,6 @@ composer install
 <pre>
 ETSY_API_KEY = 'your etsy api key'
 </pre>
-
 <p>If you don't have an API key, go to <a style="color:red" href='https://www.etsy.com/developers/register'>Here</a></p>
 
 <p>Configaure your Database in .env</p>
@@ -64,6 +63,18 @@ php artisan key:generate
 <p>Run migration using this artisan command</p>
 <pre>
 php artisan migrate
+</pre>
+<p>Run Database Seeder using this artisan command</p>
+
+<pre>
+php artisan db:seed
+</pre>
+<p>
+This seed command create 10 shops and a Admin User for testing
+</p>
+<pre>
+<b>User Email:<b> admin@test.com
+<b>Password:<b> 12345
 </pre>
 
 Now run your server and enjoy. 

@@ -7,33 +7,30 @@ use Illuminate\Http\Response;
 
 class ReciptsServices
 {
-    protected $baseUrl = 'https://openapi.etsy.com/v3/application/';
-
     public function getShopRecipts($shopId, $page = 1, $limit = 25)
     {
         $endpoint = "shops/{$shopId}/receipts";
-        $apiKey = config('etsy.api_key');
-
+        $offset = ($page - 1) * $limit;
         try {
-            $offset = ($page - 1) * $limit;
-            $response = Http::withHeaders([
-                'x-api-key' => $apiKey,
-            ])->get($this->baseUrl . $endpoint,[
+            $response = Http::etsy()
+                ->get($endpoint,[
                 'limit' => $limit,
                 'offset' => $offset,
             ]);
-
             if ($response->ok()) {
+                $result = ['success' => true];
                 if(isset($response['result'])) {
-                    return view('order-details', ['orderData' => $response['result'],'page' => $page, 'limit' => $limit]);
+                    $result['data'] = $response['result'];
+                } else {
+                    $result['data'] = [];
                 }
-                return $response->json();
+                return $result;
             }
         } catch (\Exception $e) {
             Log::error('Error in Etsy API request', [
                 'message' => $e->getMessage(),
             ]);
-            return response()->json(['error' => $e->getMessage()], Response::HTTP_BAD_REQUEST);
+           return ['success' => false, 'message' => $e->getMessage()];
         }
     }
 }

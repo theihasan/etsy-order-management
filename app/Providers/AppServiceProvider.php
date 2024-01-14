@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -19,6 +20,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Http::macro('etsy', function () {
+            return Http::withHeaders([
+                'x-api-key' => config('etsy.api_key'),
+            ])->baseUrl('https://openapi.etsy.com/v3/application/');
+        });
     }
 }
