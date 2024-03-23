@@ -20,7 +20,7 @@ Route::middleware(["auth"])->group(function () {
     Route::get("shops", [ShopController::class,"index"])->name("shops.index");
     Route::post('shops/{shop_id}/orders',[OrderController::class,'index'])->name('orders.index');
 });
-
+Route::get('data',[OrderController::class,'data'])->name('orders.data');
 
 
 
